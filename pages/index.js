@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Flex, Box, Text, Button } from "@chakra-ui/react";
 import { baseUrl, fetchApi } from "../utils/fetchApi";
-import Property from '../components/Property'
+import Property from "../components/Property";
 
 const Banner = ({
   purpose,
@@ -38,11 +38,8 @@ const Banner = ({
 );
 
 export default function Home({ propertyForRent, propertyForSale }) {
-  
-
   return (
     <Box>
-      <h1>Hello world</h1>
       <Banner
         purpose="RENT A HOME"
         title1="Rental Homes for"
@@ -69,10 +66,11 @@ export default function Home({ propertyForRent, propertyForSale }) {
         linkName="/search?purpose=for-sale"
         imageUrl="https://cdnprs.wisconsin.dev/wp-content/uploads/2021/02/1568648112267.jpeg"
       />
-
-      {propertyForSale.map((property) => (
-        <Property property={property} key={property.id} />
-      ))}
+      <Flex flexWrap="wrap">
+        {propertyForSale.map((property) => (
+          <Property property={property} key={property.id} />
+        ))}
+      </Flex>
     </Box>
   );
 }
